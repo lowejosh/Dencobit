@@ -1,5 +1,5 @@
 // Global Variables
-let taArray = new Array();      // Array for all textareas
+let taArray = new Array();      // Array for all denco objects
 let textBuffer;                 // Text buffer for all textareas
 
 // Create a denco object
@@ -19,7 +19,14 @@ taArray.push(new denco(document.getElementById("url"), encodeURL(), decodeURL())
 
 // Update the text buffer whenever a textarea is changed
 function textChanged(inputID) {
-    console.log("wokring: " + taArray[inputID].dom.id);
+    console.log("working: " + taArray[inputID].dom.id);
+    textBuffer = taArray[inputID].dom.value;               // Update text buffer
+
+    // Force text buffer onto all other textarea DOM elements
+    for (let i = 0; i < taArray.length; i++) {
+        taArray[i].dom.value = textBuffer;
+    }
+    
 }
 
 // Encoding functions
