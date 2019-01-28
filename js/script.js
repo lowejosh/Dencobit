@@ -25,6 +25,7 @@ function textChanged(inputID) {
     console.log("tb: " + textBuffer);
     console.log("decimal: " + encodeDecimal(textBuffer));
     console.log("base64: " + encodeBase64(textBuffer));
+    console.log("url: " + encodeURL(textBuffer));
     // Force text buffer onto all other textarea DOM elements
     // TODO - update with encodings/decodings
     for (let i = 0; i < taArray.length; i++) {
@@ -60,8 +61,8 @@ function encodeBase64(input) {
     return btoa(input);
 }
 
-function encodeURL() {
-
+function encodeURL(input) {
+    return encodeURIComponent(input).replace(/%20/g,'+');
 }
 
 // Decoding functions (All are developed under the context of returning ASCII output)
