@@ -35,7 +35,6 @@ function textChanged(inputID) {
 
 // Encoding functions (All are developed under the context of receiving ASCII input)
 function encodeASCII(input) {
-    // Do nothing
     return input;
 }
 
@@ -58,6 +57,7 @@ function encodeDecimal(input) {
 }
 
 function encodeBase64(input) {
+    return btoa(input);
 }
 
 function encodeURL() {
