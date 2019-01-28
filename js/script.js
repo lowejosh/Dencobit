@@ -27,11 +27,10 @@ function textChanged(inputID) {
     console.log("base64: " + encodeBase64(textBuffer));
     console.log("url: " + encodeURL(textBuffer));
     // Force text buffer onto all other textarea DOM elements
-    // TODO - update with encodings/decodings
     for (let i = 0; i < taArray.length; i++) {
-        taArray[i].dom.value = textBuffer;
+        let obj = taArray[i];
+        obj.dom.value = obj.encFunc(textBuffer);
     }
-    
 }
 
 // Encoding functions (All are developed under the context of receiving ASCII input)
@@ -90,3 +89,6 @@ function decodeBase64() {
 function decodeURL() {
 
 }
+
+// Initialize the placeholder values
+textChanged(0);
