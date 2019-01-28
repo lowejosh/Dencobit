@@ -23,7 +23,8 @@ function textChanged(inputID) {
     textBuffer = taArray[inputID].dom.value;               // Update text buffer
 
     console.log("tb: " + textBuffer);
-    console.log("binary: " + encodeBinary(textBuffer));
+    console.log("decimal: " + encodeDecimal(textBuffer));
+    console.log("base64: " + encodeBase64(textBuffer));
     // Force text buffer onto all other textarea DOM elements
     // TODO - update with encodings/decodings
     for (let i = 0; i < taArray.length; i++) {
@@ -44,16 +45,19 @@ function encodeBinary(input) {
     }).join(' ');
 }
 
-function encodeHexadecimal() {
-
+function encodeHexadecimal(input) {
+    return input.split('').map(function (char) {
+        return char.charCodeAt(0).toString(16);
+    }).join(' ');
 }
 
-function encodeDecimal() {
-
+function encodeDecimal(input) {
+    return input.split('').map(function (char) {
+        return char.charCodeAt(0).toString(10);
+    }).join(' ');
 }
 
-function encodeBase64() {
-
+function encodeBase64(input) {
 }
 
 function encodeURL() {
