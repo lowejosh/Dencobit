@@ -19,17 +19,17 @@ taArray.push(new denco(document.getElementById("url"), encodeURL, decodeURL));
 
 // Update the text buffer whenever a textarea is changed
 function textChanged(inputID) {
-    console.log("working: " + taArray[inputID].dom.id);
-    textBuffer = taArray[inputID].dom.value;               // Update text buffer
+    textBuffer = taArray[inputID].decFunc(taArray[inputID].dom.value);               // Decode to ASCII and update text buffer
 
-    console.log("tb: " + textBuffer);
-    console.log("decimal: " + encodeDecimal(textBuffer));
-    console.log("base64: " + encodeBase64(textBuffer));
-    console.log("url: " + encodeURL(textBuffer));
+    console.log("binary 0010: " + decodeBinary("01010010 00101110"));
+    console.log("encoding a: " + encodeBinary("a"));
     // Force text buffer onto all other textarea DOM elements
     for (let i = 0; i < taArray.length; i++) {
-        let obj = taArray[i];
-        obj.dom.value = obj.encFunc(textBuffer);
+        // If the input isn't the one currently being edited
+        if (i != inputID) {
+            let obj = taArray[i];
+            obj.dom.value = obj.encFunc(textBuffer);
+        }
     }
 }
 
@@ -40,7 +40,12 @@ function encodeASCII(input) {
 
 function encodeBinary(input) {
     return input.split('').map(function (char) {
-        return char.charCodeAt(0).toString(2);
+        let binary = char.charCodeAt(0).toString(2);   
+        // Add the zeroes that were removed
+        while (binary.length < 8) {
+            binary = '0' + binary; 
+        }
+        return binary;
     }).join(' ');
 }
 
@@ -66,12 +71,10 @@ function encodeURL(input) {
 
 // Decoding functions (All are developed under the context of returning ASCII output)
 function decodeASCII(input) {
-    // Do nothing
     return input;
 }
 
-function decodeBinary() {
-
+function decodeBinary(input) {
 }
 
 function decodeHexadecimal() {
@@ -82,8 +85,8 @@ function decodeDecimal() {
 
 }
 
-function decodeBase64() {
-
+function decodeBase64(input) {
+    return atob(input);
 }
 
 function decodeURL() {
