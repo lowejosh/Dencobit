@@ -77,7 +77,6 @@ function decodeASCII(input) {
 }
 
 function decodeBinary(input) {
-    console.log("STR: " + input);
     let binary = input.split(" ");
     let ascii = [];
 
@@ -87,11 +86,25 @@ function decodeBinary(input) {
     return ascii.join("");
 }
 
-function decodeHexadecimal() {
+function decodeHexadecimal(input) {
+    let hexadecimal = input.split(" ");
+    let ascii = [];
+
+    for (i = 0; i < hexadecimal.length; i++) {
+        ascii.push(String.fromCharCode(parseInt(hexadecimal[i], 16)));
+    }
+    return ascii.join("");
 
 }
 
-function decodeDecimal() {
+function decodeDecimal(input) {
+    let decimal = input.split(" ");
+    let ascii = [];
+
+    for (i = 0; i < decimal.length; i++) {
+        ascii.push(String.fromCharCode(parseInt(decimal[i], 10)));
+    }
+    return ascii.join("");
 
 }
 
