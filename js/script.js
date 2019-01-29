@@ -28,6 +28,11 @@ function textChanged(inputID) {
             // Select the object and encode the text buffer onto it's DOM value
             let obj = taArray[i];
             obj.dom.value = obj.encFunc(textBuffer);
+
+            // (Kills a potential bug)
+            if (taArray[inputID].dom.value.length == 0) {
+                obj.dom.value = "";
+            }
         }
     }
 }
@@ -112,8 +117,8 @@ function decodeBase64(input) {
     return atob(input);
 }
 
-function decodeURL() {
-
+function decodeURL(input) {
+    return decodeURIComponent(input).replace(new RegExp("\\+", "g"), " ");
 }
 
 // Initialize the placeholder values
