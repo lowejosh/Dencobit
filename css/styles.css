@@ -2,17 +2,23 @@
 .title {
     text-align: center;
     margin: 12px;
+    margin-top: 0.5em;
+    font-family: 'Abel', sans-serif;
+    font-weight: bold;
+    color: #322944;
 }
 
 .col-sm {
     height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: 'Noto Sans KR', sans-serif;
     background-color: yellow;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
 .input-title {
     width: 100%;
     background-color: #85BAA1;
+    color: #322944;
     text-align: center;
     height: 30px;
     line-height: 30px;
@@ -20,24 +26,52 @@
 
 .input-text {
     width: 100%;
-    height: 100%;
-    height: 270px;
+    height: 240px;
     padding: 0.4em;
     padding-left: 0.7em;
     padding-right: 0.7em;
-
     border: none;
     overflow: auto;
     outline: none;
     resize: none;
     background-color: #CEEDDB;
-
+    color: #322944;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    position: absolute;
+}
 
+.d-button {
+    height: 30px;
+    width: 100%;
+    line-height: 28px;
+    background-color: #85BAA1;
+    color: #322944;
+    float: left;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    top: 270px;
+    transition: 0.1s;
+}
+
+.d-button:hover {
+    background-color: #322944;
+    color: #F2FFF8;
+    cursor: pointer;
+}
+
+.d-button:active {
+    background-color: #483D63;
 }
 
 html, body {
     background-color: #6E8894 !important;
+}
+
+.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }

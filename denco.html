@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="css/styles.css?v=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Noto+Sans+KR" rel="stylesheet">
 </head>
 
 <body>
@@ -17,30 +18,36 @@
     <div class="container">
         <div class="row">
             <div class="col-sm p-0 m-2">
-                <div class="input-title">ASCII</div>
-                <textarea name="ascii" id="ascii" class="input-text" oninput="textChanged(0)">REEE</textarea>
+                <div class="input-title unselectable">ASCII</div>
+                <textarea name="ascii" id="ascii" class="input-text" oninput="textChanged(0)" spellcheck="false">Hello, World!</textarea>
+                <div class="d-button unselectable" onclick="Copy(0)">Copy</div>
             </div>
             <div class="col-sm p-0 m-2">
-                <div class="input-title">Binary</div>
-                <textarea name="binary" id="binary" class="input-text" oninput="textChanged(1)"></textarea>
+                <div class="input-title unselectable">Binary</div>
+                <textarea name="binary" id="binary" class="input-text" oninput="textChanged(1)" spellcheck="false"></textarea>
+                <div class="d-button unselectable" onclick="Copy(1)">Copy</div>
             </div>
             <div class="col-sm p-0 m-2">
-                <div class="input-title">Hexadecimal</div>
-                <textarea name="hexadecimal" id="hexadecimal" class="input-text" oninput="textChanged(2)"></textarea>
+                <div class="input-title unselectable">Hexadecimal</div>
+                <textarea name="hexadecimal" id="hexadecimal" class="input-text" oninput="textChanged(2)" spellcheck="false"></textarea>
+                <div class="d-button unselectable" onclick="Copy(2)">Copy</div>
            </div>
         </div>
         <div class="row">
             <div class="col-sm p-0 m-2">
-                <div class="input-title">Decimal</div>
-                <textarea name="decimal" id="decimal" class="input-text" oninput="textChanged(3)"></textarea>
+                <div class="input-title unselectable">Decimal</div>
+                <textarea name="decimal" id="decimal" class="input-text" oninput="textChanged(3)" spellcheck="false"></textarea>
+                <div class="d-button unselectable" onclick="Copy(3)">Copy</div>
             </div>
             <div class="col-sm p-0 m-2">
-                <div class="input-title">Base64</div>
-                <textarea name="base64" id="base64" class="input-text" oninput="textChanged(4)"></textarea>
+                <div class="input-title unselectable">Base64</div>
+                <textarea name="base64" id="base64" class="input-text" oninput="textChanged(4)" spellcheck="false"></textarea>
+                <div class="d-button unselectable" onclick="Copy(4)">Copy</div>
             </div>
             <div class="col-sm p-0 m-2">
-                <div class="input-title">URL</div>
-                <textarea name="url" id="url" class="input-text" oninput="textChanged(5)"></textarea>
+                <div class="input-title unselectable">URL</div>
+                <textarea name="url" id="url" class="input-text" oninput="textChanged(5)" spellcheck="false"></textarea>
+                <div class="d-button unselectable" onclick="Copy(5)">Copy</div>
            </div>
         </div>
 
