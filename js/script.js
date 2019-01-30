@@ -14,12 +14,18 @@ taArray.push(new denco(document.getElementById("ascii"), encodeASCII, decodeASCI
 taArray.push(new denco(document.getElementById("binary"), encodeBinary, decodeBinary));
 taArray.push(new denco(document.getElementById("hexadecimal"), encodeHexadecimal, decodeHexadecimal));
 taArray.push(new denco(document.getElementById("decimal"), encodeDecimal, decodeDecimal));
-taArray.push(new denco(document.getElementById("base64"), encodeBase64, decodeBase64));
+taArray.push(new denco(document.getElementById("base64"), btoa, atob));
 taArray.push(new denco(document.getElementById("url"), encodeURL, decodeURL));
+
+// Initialize the placeholder values
+textChanged(0);
 
 // Update the text buffer whenever a textarea is changed
 function textChanged(inputID) {
-    textBuffer = taArray[inputID].decFunc(taArray[inputID].dom.value);               // Decode to ASCII and update text buffer
+    let curr_edit = taArray[inputID];
+
+    // Decode to ASCII and update text buffer
+    textBuffer = curr_edit.decFunc(curr_edit.dom.value);            
 
     // Force text buffer onto all other textarea DOM elements
     for (i = 0; i < taArray.length; i++) {
@@ -30,14 +36,19 @@ function textChanged(inputID) {
             obj.dom.value = obj.encFunc(textBuffer);
 
             // (Kills a potential bug)
-            if (taArray[inputID].dom.value.length == 0) {
+            if (curr_edit.dom.value.length == 0) {
                 obj.dom.value = "";
             }
         }
     }
 }
 
-// Encoding functions (All are developed under the context of receiving ASCII input)
+// Select text
+function Select(inputID) {
+    taArray[inputID].dom.select();
+}
+
+// ========== Encoding functions (All are developed under the context of receiving ASCII input) ==========
 function encodeASCII(input) {
     return input;
 }
@@ -68,25 +79,27 @@ function encodeDecimal(input) {
     }).join(' ');
 }
 
-function encodeBase64(input) {
-    return btoa(input);
-}
-
 function encodeURL(input) {
     return encodeURIComponent(input).replace(/%20/g,'+');
 }
 
-// Decoding functions (All are developed under the context of returning ASCII output)
+// ========== Decoding functions (All are developed under the context of returning ASCII output) ==========
 function decodeASCII(input) {
     return input;
 }
 
 function decodeBinary(input) {
-    let binary = input.split(" ");
+    // Trim the input of whitespace and split into bytes as per 8th position
+    binary = input.replace(/\s/g,"").match(new RegExp('.{1,8}', 'g'));
+
     let ascii = [];
 
-    for (i = 0; i < binary.length; i++) {
-        ascii.push(String.fromCharCode(parseInt(binary[i], 2)));
+    if (binary == null) {
+        return "";
+    } else {
+        for (i = 0; i < binary.length; i++) {
+            ascii.push(String.fromCharCode(parseInt(binary[i], 2)));
+        }
     }
     return ascii.join("");
 }
@@ -99,7 +112,6 @@ function decodeHexadecimal(input) {
         ascii.push(String.fromCharCode(parseInt(hexadecimal[i], 16)));
     }
     return ascii.join("");
-
 }
 
 function decodeDecimal(input) {
@@ -110,16 +122,8 @@ function decodeDecimal(input) {
         ascii.push(String.fromCharCode(parseInt(decimal[i], 10)));
     }
     return ascii.join("");
-
-}
-
-function decodeBase64(input) {
-    return atob(input);
 }
 
 function decodeURL(input) {
     return decodeURIComponent(input).replace(new RegExp("\\+", "g"), " ");
 }
-
-// Initialize the placeholder values
-textChanged(0);
