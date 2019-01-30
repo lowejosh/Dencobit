@@ -76,14 +76,17 @@ html, body {
 }
 
 .nav-link {
-    font-family: 'Noto Sans KR', sans-serif;
-    color: #4E475E;
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
+    color: #544F60;
 }
 
 .nav-link:hover {
     color: #322944;
+    font-weight: bold;
 }
 
 .nav-link.active {
+    font-weight: bold;
     color: #322944;
 }

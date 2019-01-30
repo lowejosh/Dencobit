@@ -14,7 +14,7 @@ taArray.push(new denco(document.getElementById("ascii"), encodeASCII, decodeASCI
 taArray.push(new denco(document.getElementById("binary"), encodeBinary, decodeBinary));
 taArray.push(new denco(document.getElementById("hexadecimal"), encodeHexadecimal, decodeHexadecimal));
 taArray.push(new denco(document.getElementById("decimal"), encodeDecimal, decodeDecimal));
-taArray.push(new denco(document.getElementById("base64"), btoa, atob));
+taArray.push(new denco(document.getElementById("base64"), encodeBase64, decodeBase64));
 taArray.push(new denco(document.getElementById("url"), encodeURL, decodeURL));
 
 // Initialize the placeholder values
@@ -79,6 +79,10 @@ function encodeDecimal(input) {
     }).join(' ');
 }
 
+function encodeBase64(input) {
+    return btoa(input);
+}
+
 function encodeURL(input) {
     return encodeURIComponent(input).replace(/%20/g,'+');
 }
@@ -122,6 +126,10 @@ function decodeDecimal(input) {
         ascii.push(String.fromCharCode(parseInt(decimal[i], 10)));
     }
     return ascii.join("");
+}
+
+function decodeBase64(input) {
+    return atob(input); 
 }
 
 function decodeURL(input) {
