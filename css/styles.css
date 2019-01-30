@@ -77,9 +77,13 @@ html, body {
 
 .nav-link {
     font-family: 'Noto Sans KR', sans-serif;
-    color: #322944;
+    color: #4E475E;
 }
 
 .nav-link:hover {
-    color: #483D63;
+    color: #322944;
+}
+
+.nav-link.active {
+    color: #322944;
 }
