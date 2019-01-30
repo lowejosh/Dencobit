@@ -1,9 +1,13 @@
 
+html, body {
+    background-color: #6E8894 !important;
+}
+
 .title {
     text-align: center;
-    margin: 12px;
-    margin-top: 0.5em;
     font-family: 'Abel', sans-serif;
+    margin: 0;
+    margin-top: 0.5em;
     font-weight: bold;
     color: #322944;
 }
@@ -65,12 +69,17 @@
     background-color: #483D63;
 }
 
-html, body {
-    background-color: #6E8894 !important;
-}
-
 .unselectable {
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
+}
+
+.nav-link {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #322944;
+}
+
+.nav-link:hover {
+    color: #483D63;
 }
