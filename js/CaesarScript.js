@@ -22,7 +22,6 @@ function solve() {
     for (let i = 0; i < 26; i++) {
         shiftedText = shiftText(input, i);
         let hits = 0;
-        console.log("\n\n" + shiftedText + "\n");
 
         // Check trigraphs
         for (let ii = 0; ii < trigraphs.length; ii++) {
@@ -67,11 +66,15 @@ function solve() {
         }
     }
 
-    // Update the HTML
+     // Update the HTML
     document.getElementById("plaintext").value = shiftText(input, bestKeySoFar);
-    document.getElementById("shift").innerHTML = "Shift: " + 26 - bestKeySoFar;
-
+    if (!document.getElementById("ciphertext").value.match(/[a-z]/i)) {
+        document.getElementById("shift").innerHTML = "";
+    } else {
+        document.getElementById("shift").innerHTML = "Shift: " + (26 - bestKeySoFar);
+    }
 }
+
 
 // Shifts the input across the alphabet for a given key
 function shiftText(input, key) {
