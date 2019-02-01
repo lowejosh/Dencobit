@@ -1,11 +1,4 @@
-// Caesar Solving Algorithm - Joshua Lowe
-
-// ===!!!=== NOTES ===!!!===
-// === HITS ===
-// Trigraphs - the and tha ent ion tio for nce has tis oft men
-// Digraphs - th he an in er on re ed nd ha at en es of nt ea ti to io
-// End of words - e t d s
-
+// ========== Caesar Solving Algorithm - Joshua Lowe ========== //
 // Global Variables
 let hits = 0;
 let littleHits = 0;
@@ -17,12 +10,12 @@ function solve() {
     // Variables
     let bestScore = 0;
     let bestKeySoFar; 
-    
 
-    // ========== HITS =========
+    // Hits
     let trigraphs = "the and tha ent ion tio for nce has tis oft men".split(' ');
     let digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo".split(' ');
-    let endOfWords = "e t d s".split(' ');
+    let highFreq = "e t a o i n s r h".split(' ');
+    let lowFreq = "z q j x k v b y w".split(' ');
 
     // Brute for shift the ciphertext and regex all hits and keep a score
     let shiftedText;
@@ -33,9 +26,8 @@ function solve() {
 
         // Check trigraphs
         for (let ii = 0; ii < trigraphs.length; ii++) {
-            // Regex pattern
             let re = new RegExp(trigraphs[ii],"g");
-            // If there are trigraph matches, increment big hits by 2 for each one
+            // If there are trigraph matches, increment hits by 2 for each one
             while (re.exec(shiftedText) !== null) {
                 hits+=2;
             }
@@ -43,51 +35,52 @@ function solve() {
         
         // Check digraphs
         for (let ii = 0; ii < digraphs.length; ii++) {
-            // Regex pattern
             let re = new RegExp(digraphs[ii],"g");
-            // If there are digraph matches, increment big hits by 1 for each one
+            // If there are digraph matches, increment hits by 1 for each one
             while (re.exec(shiftedText) !== null) {
                 hits+=1;
             }
         }
-/*
-        // Check end of words
-        for (let ii = 0; ii < endOfWords.length; ii++) {
-            // Regex pattern
-            let re = new RegExp(endOfWords[ii] + '\\b',"g");
-            // If there are digraph matches, increment big hits by 1 for each one
+
+        // Check high frequency letters
+        for (let ii = 0; ii < highFreq.length; ii++) {
+            let re = new RegExp(highFreq[ii],"g");
+            // If there are matches, increment hits by 0.2 for each one
             while (re.exec(shiftedText) !== null) {
-                console.log("eow MATCH");
-                hits+=0.5;
+                hits+=0.2;
             }
         }
-        */
+
+        // Check low frequency letters
+        for (let ii = 0; ii < lowFreq.length; ii++) {
+            let re = new RegExp(lowFreq[ii],"g");
+            // If there are matches, decrement hits by 0.2 for each one
+            while (re.exec(shiftedText) !== null) {
+                hits-=0.2;
+            }
+        }
         
-        // If most big hits so far, save the key
+        // If this shift has the most hits so far, save the key
         if (hits > bestScore) {
             bestScore = hits;
             bestKeySoFar = i;
         }
-    
-        console.log("key: " + i + "   hits: " + hits);
     }
 
-    console.log("\n\nKey: " + bestKeySoFar);
-
-    // Update the textarea
+    // Update the HTML
     document.getElementById("plaintext").value = shiftText(input, bestKeySoFar);
-
-    // Update the shift size
-    let shift = 26 - bestKeySoFar;
-    document.getElementById("shift").innerHTML = "Shift: " + shift;
+    document.getElementById("shift").innerHTML = "Shift: " + 26 - bestKeySoFar;
 
 }
 
 // Shifts the input across the alphabet for a given key
 function shiftText(input, key) {
     let shiftedText = "";
+    // For ever character
     for (let i = 0; i < input.length; i++) {
+        // If it is a letter
         if (input[i].match(/[a-z]/i)) {
+            // Shift the letter using it's character code
             shiftedText+=String.fromCharCode(97 + ((input.charCodeAt(i) + key - 97) % 26)); 
         } else {
             shiftedText+=input[i];
