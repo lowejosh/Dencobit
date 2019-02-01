@@ -102,3 +102,15 @@ html, body {
     left: 50%;
     border-left: 1px solid #85BAA1;
 }
+
+.bottom-banner {
+    height: 30px;
+    width: 100%;
+    line-height: 28px;
+    background-color: #85BAA1;
+    color: #322944;
+    float: left;
+    text-align: center;
+    position: absolute;
+    top: 270px;
+}

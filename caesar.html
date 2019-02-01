@@ -23,9 +23,9 @@
         <div class="row">
             <div class="col-sm p-0 m-2">
                 <div class="input-title unselectable">Caesar Solver</div>
-                <textarea class="input-text first-half" spellcheck="false">olssv, dvysk!</textarea>
-                <textarea class="input-text second-half" spellcheck="false"></textarea>
-                <div class="d-button unselectable" onclick="solve()">Solve</div>
+                <textarea class="input-text first-half" id="ciphertext" oninput="solve()" spellcheck="false">olssv, dvysk!</textarea>
+                <textarea class="input-text second-half" id="plaintext" spellcheck="false" disabled></textarea>
+                <div class="bottom-banner unselectable" id="shift">Shift: </div>
             </div>
         </div>
     </div>
