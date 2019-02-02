@@ -24,25 +24,27 @@
             <div class="flip-container">
                 <div class="flipper" id="card">
                     <div class="front">
-                        <div class="col-sm p-0 m-2">
+                        <div class="col-sm p-0 m-2 margin-fix">
                             <div class="input-title unselectable">
                                 Caesar Solver
-                                <img src="img/swapicon.png" width="26" height="26" class="swap-icon" onclick="flip()">
+                                <img src="img/swapicon.png" id="imgFlip" width="26" height="26" class="swap-icon" onclick="flip()">
                             </div>
-                            <textarea class="input-text first-half" id="ciphertext" oninput="solve()" spellcheck="false">olssv, dvysk!</textarea>
+                            <textarea class="input-text first-half" id="ciphertext" oninput="solve()" spellcheck="false">uryyb, jbeyq!</textarea>
                             <textarea class="input-text second-half" id="plaintext" spellcheck="false" disabled></textarea>
                             <div class="bottom-banner unselectable" id="shift"></div>
                         </div>
                     </div>
                     <div class="back">
-                        <div class="col-sm p-0 m-2">
+                        <div class="col-sm p-0 m-2 margin-fix">
                             <div class="input-title unselectable">
                                 Caesar Shifter
-                                <img src="img/swapicon.png" width="26" height="26" class="swap-icon" onclick="flipBack()">
+                                <img src="img/swapicon.png" id="imgFlipBack" width="26" height="26" class="swap-icon" onclick="flipBack()">
                             </div>
                             <textarea class="input-text first-half" id="plaintext2" oninput="shift()" spellcheck="false">hello, world!</textarea>
                             <textarea class="input-text second-half" id="ciphertext2" spellcheck="false" disabled></textarea>
-                            <div class="bottom-banner unselectable" id="shift"></div>
+                            <div class="bottom-banner unselectable" id="shift">
+                                <span class="shiftAdjust" onclick="decShift()">-</span> Shift: <span id="shiftAmount"></span> <span class="shiftadjust" onclick="incShift()">+</span>
+                            </div>
                         </div>
 
                     </div>

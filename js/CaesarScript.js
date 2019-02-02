@@ -1,7 +1,8 @@
-// ========== Caesar Solving Algorithm - Joshua Lowe ========== //
+// ========== Caesar Solving Algorithm - Joshua Lowe, GitHub - https://github.com/lowejosh/ ========== //
 // Global Variables
 let hits = 0;
 let littleHits = 0;
+let shiftAmount = 13;
 
 function solve() {
     // Grab the ciphertext
@@ -13,7 +14,7 @@ function solve() {
 
     // Hits
     let trigraphs = "the and tha ent ion tio for nce has tis oft men".split(' ');
-    let digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo".split(' ');
+    let digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo ck".split(' ');
     let highFreq = "e t a o i n s r h".split(' ');
     let lowFreq = "z q j x k v b y w".split(' ');
 
@@ -28,7 +29,7 @@ function solve() {
             let re = new RegExp(trigraphs[ii],"g");
             // If there are trigraph matches, increment hits by 2 for each one
             while (re.exec(shiftedText) !== null) {
-                hits+=2;
+                hits+=20;
             }
         }
         
@@ -37,7 +38,7 @@ function solve() {
             let re = new RegExp(digraphs[ii],"g");
             // If there are digraph matches, increment hits by 1 for each one
             while (re.exec(shiftedText) !== null) {
-                hits+=1;
+                hits+=10;
             }
         }
 
@@ -46,7 +47,7 @@ function solve() {
             let re = new RegExp(highFreq[ii],"g");
             // If there are matches, increment hits by 0.2 for each one
             while (re.exec(shiftedText) !== null) {
-                hits+=0.2;
+                hits+=2;
             }
         }
 
@@ -55,7 +56,7 @@ function solve() {
             let re = new RegExp(lowFreq[ii],"g");
             // If there are matches, decrement hits by 0.2 for each one
             while (re.exec(shiftedText) !== null) {
-                hits-=0.2;
+                hits-=2;
             }
         }
         
@@ -95,12 +96,14 @@ function shiftText(input, key) {
 // Flip card
 function flip() {
     document.getElementById("card").style.transform = "rotateY(180deg)";
+    document.getElementById("imgFlipBack").style.transform = "rotateY(180deg)";
     shift();
 }
 
 // Flip card back
 function flipBack() {
     document.getElementById("card").style.transform = "rotateY(0deg)";
+    document.getElementById("imgFlip").style.transform = "rotateY(0deg)";
     solve();
 }
 
@@ -110,10 +113,29 @@ function shift() {
     let input = document.getElementById("plaintext2").value.toLowerCase();
 
     // Code the ciphertext
-    let ciphertext = shiftText(input, 7); 
+    let ciphertext = shiftText(input, shiftAmount); 
 
     // Update the HTML
     document.getElementById("ciphertext2").value = ciphertext;
+    document.getElementById("shiftAmount").innerHTML = shiftAmount;
 }
+
+// Increment the shift
+function incShift() {
+    console.log("REACHED");
+    if (shiftAmount < 26) {
+        shiftAmount++;
+        shift();
+    }
+}
+
+// Decrement the shift
+function decShift() {
+    if (shiftAmount > 1) {
+        shiftAmount--;
+        shift();
+    }
+}
+
 // Start the placeholder decoding
 solve();

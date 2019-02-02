@@ -94,7 +94,7 @@ function decodeASCII(input) {
 
 function decodeBinary(input) {
     // Trim the input of whitespace and split into bytes as per 8th position
-    binary = input.replace(/\s/g,"").match(new RegExp('.{1,8}', 'g'));
+    let binary = input.replace(/\s/g,"").match(new RegExp('.{1,8}', 'g'));
 
     let ascii = [];
 
@@ -109,11 +109,18 @@ function decodeBinary(input) {
 }
 
 function decodeHexadecimal(input) {
-    let hexadecimal = input.split(" ");
+    // Trim the input of whitespace and split into hex slices as per 2nd position
+    let hexadecimal = input.replace(/\s/g,"").match(new RegExp('.{1,2}', 'g'));
+
     let ascii = [];
 
-    for (i = 0; i < hexadecimal.length; i++) {
-        ascii.push(String.fromCharCode(parseInt(hexadecimal[i], 16)));
+    if (hexadecimal == null) {
+        return "";
+    } else {
+
+        for (i = 0; i < hexadecimal.length; i++) {
+            ascii.push(String.fromCharCode(parseInt(hexadecimal[i], 16)));
+        }
     }
     return ascii.join("");
 }
