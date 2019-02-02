@@ -134,6 +134,13 @@ html, body {
     width: calc(100% - 16px) !important;
 }
 
+.shift-adjust {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Lucida Console', monospace;
+    cursor: pointer;
+}
+
 /* ========= FLIPPING ANIMATION ======== */
 .flip-container {
 	perspective: 1000px;

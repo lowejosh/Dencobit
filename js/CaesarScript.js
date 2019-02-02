@@ -72,7 +72,7 @@ function solve() {
     if (!document.getElementById("ciphertext").value.match(/[a-z]/i)) {
         document.getElementById("shift").innerHTML = "";
     } else {
-        document.getElementById("shift").innerHTML = "Shift: " + (26 - bestKeySoFar);
+        document.getElementById("shift").innerHTML = "Key: " + (26 - bestKeySoFar);
     }
 }
 
@@ -95,6 +95,7 @@ function shiftText(input, key) {
 
 // Flip card
 function flip() {
+//    document.getElementById("plaintext2").value = document.getElementById("plaintext").value;
     document.getElementById("card").style.transform = "rotateY(180deg)";
     document.getElementById("imgFlipBack").style.transform = "rotateY(180deg)";
     shift();
@@ -102,6 +103,7 @@ function flip() {
 
 // Flip card back
 function flipBack() {
+//    document.getElementById("ciphertext").value = document.getElementById("ciphertext2").value;
     document.getElementById("card").style.transform = "rotateY(0deg)";
     document.getElementById("imgFlip").style.transform = "rotateY(0deg)";
     solve();
