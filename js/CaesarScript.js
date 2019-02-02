@@ -92,5 +92,10 @@ function shiftText(input, key) {
     return shiftedText;
 }
 
+// Flip card
+function flip() {
+    document.getElementById("card").style.transform = "rotateY(180deg)";
+}
+
 // Start the placeholder decoding
 solve();
