@@ -95,7 +95,25 @@ function shiftText(input, key) {
 // Flip card
 function flip() {
     document.getElementById("card").style.transform = "rotateY(180deg)";
+    shift();
 }
 
+// Flip card back
+function flipBack() {
+    document.getElementById("card").style.transform = "rotateY(0deg)";
+    solve();
+}
+
+// Shift to create a cipher
+function shift() {
+    // Grab the plaintext
+    let input = document.getElementById("plaintext2").value.toLowerCase();
+
+    // Code the ciphertext
+    let ciphertext = shiftText(input, 7); 
+
+    // Update the HTML
+    document.getElementById("ciphertext2").value = ciphertext;
+}
 // Start the placeholder decoding
 solve();
