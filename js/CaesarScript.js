@@ -23,41 +23,11 @@ function solve() {
         shiftedText = shiftText(input, i);
         let csrHits = 0;
 
-        // Check trigraphs
-        for (let ii = 0; ii < trigraphs.length; ii++) {
-            let re = new RegExp(trigraphs[ii],"g");
-            // If there are trigraph matches, increment csrHits by 2 for each one
-            while (re.exec(shiftedText) !== null) {
-                csrHits+=20;
-            }
-        }
-        
-        // Check digraphs
-        for (let ii = 0; ii < digraphs.length; ii++) {
-            let re = new RegExp(digraphs[ii],"g");
-            // If there are digraph matches, increment csrHits by 1 for each one
-            while (re.exec(shiftedText) !== null) {
-                csrHits+=10;
-            }
-        }
-
-        // Check high frequency letters
-        for (let ii = 0; ii < highFreq.length; ii++) {
-            let re = new RegExp(highFreq[ii],"g");
-            // If there are matches, increment csrHits by 0.2 for each one
-            while (re.exec(shiftedText) !== null) {
-                csrHits+=2;
-            }
-        }
-
-        // Check low frequency letters
-        for (let ii = 0; ii < lowFreq.length; ii++) {
-            let re = new RegExp(lowFreq[ii],"g");
-            // If there are matches, decrement csrHits by 0.2 for each one
-            while (re.exec(shiftedText) !== null) {
-                csrHits-=2;
-            }
-        }
+        // Check and calculate hits
+        csrHits+=checkHits(shiftedText, trigrpahs, 20);
+        csrHits+=checkHits(shiftedText, digraphs, 10);
+        csrHits+=checkHits(shiftedText, highFreq, 2);
+        csrHits+=checkHits(shiftedText, lowFreq, -2);
         
         // If this shift has the most csrHits so far, save the key
         if (csrHits > bestScore) {
@@ -75,6 +45,18 @@ function solve() {
     }
 }
 
+// Checks the given text for hits from a given array of hit registers and counts the score
+function checkHits(input, hitReg, score) {
+    let hits = 0;
+    for (let i = 0; i < hitReg.length; i++) {
+        let re = new RegExp(hitReg[i],"g");
+        // If there are matches, decrement csrHits by 0.2 for each one
+        while (re.exec(input) !== null) {
+            hits+=score;
+        }
+    }
+    return hits;
+}
 
 // Shifts the input across the alphabet for a given key
 function shiftText(input, key) {
