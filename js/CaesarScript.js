@@ -1,78 +1,77 @@
+// === Global Vars ===
+let trigraphs = "the and tha ent ion tio for nce has tis oft men you".split(' ');
+let digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo ck ce".split(' ');
+let highFreq = "e t a o i n s r h".split(' ');
+let lowFreq = "z q j x k v b y w".split(' ');
+let alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split()
+
 // ========== Caesar Solving Algorithm - Joshua Lowe, GitHub - https://github.com/lowejosh/ ========== //
-// Global Variables
-let hits = 0;
-let littleHits = 0;
-let shiftAmount = 13;
+let csrHits = 0;
+let csrShiftAmount = 13;
 
 function solve() {
-    // Grab the ciphertext
-    let input = document.getElementById("ciphertext").value.toLowerCase();
+    // Grab the csrCipherText
+    let input = document.getElementById("csrCipherText").value.toLowerCase();
 
     // Variables
     let bestScore = 0;
     let bestKeySoFar; 
 
-    // Hits
-    let trigraphs = "the and tha ent ion tio for nce has tis oft men".split(' ');
-    let digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo ck".split(' ');
-    let highFreq = "e t a o i n s r h".split(' ');
-    let lowFreq = "z q j x k v b y w".split(' ');
-
-    // Brute for shift the ciphertext and regex all hits and keep a score
+    // Brute for shift the csrCipherText and regex all csrHits and keep a score
     let shiftedText;
     for (let i = 0; i < 26; i++) {
         shiftedText = shiftText(input, i);
-        let hits = 0;
+        let csrHits = 0;
 
         // Check trigraphs
         for (let ii = 0; ii < trigraphs.length; ii++) {
             let re = new RegExp(trigraphs[ii],"g");
-            // If there are trigraph matches, increment hits by 2 for each one
+            // If there are trigraph matches, increment csrHits by 2 for each one
             while (re.exec(shiftedText) !== null) {
-                hits+=20;
+                csrHits+=20;
             }
         }
         
         // Check digraphs
         for (let ii = 0; ii < digraphs.length; ii++) {
             let re = new RegExp(digraphs[ii],"g");
-            // If there are digraph matches, increment hits by 1 for each one
+            // If there are digraph matches, increment csrHits by 1 for each one
             while (re.exec(shiftedText) !== null) {
-                hits+=10;
+                csrHits+=10;
             }
         }
 
         // Check high frequency letters
         for (let ii = 0; ii < highFreq.length; ii++) {
             let re = new RegExp(highFreq[ii],"g");
-            // If there are matches, increment hits by 0.2 for each one
+            // If there are matches, increment csrHits by 0.2 for each one
             while (re.exec(shiftedText) !== null) {
-                hits+=2;
+                csrHits+=2;
             }
         }
 
         // Check low frequency letters
         for (let ii = 0; ii < lowFreq.length; ii++) {
             let re = new RegExp(lowFreq[ii],"g");
-            // If there are matches, decrement hits by 0.2 for each one
+            // If there are matches, decrement csrHits by 0.2 for each one
             while (re.exec(shiftedText) !== null) {
-                hits-=2;
+                csrHits-=2;
             }
         }
         
-        // If this shift has the most hits so far, save the key
-        if (hits > bestScore) {
-            bestScore = hits;
+        // If this shift has the most csrHits so far, save the key
+        if (csrHits > bestScore) {
+            bestScore = csrHits;
             bestKeySoFar = i;
         }
     }
 
      // Update the HTML
-    document.getElementById("plaintext").value = shiftText(input, bestKeySoFar);
-    if (!document.getElementById("ciphertext").value.match(/[a-z]/i)) {
+    document.getElementById("csrPlaintext").value = shiftText(input, bestKeySoFar);
+    if (!document.getElementById("csrCipherText").value.match(/[a-z]/i)) {
         document.getElementById("shift").innerHTML = "";
     } else {
-        document.getElementById("shift").innerHTML = "Key: " + (26 - bestKeySoFar);
+        document.getElementById("shift").innerHTML = "Key " + (26 - bestKeySoFar);
     }
 }
 
@@ -95,7 +94,7 @@ function shiftText(input, key) {
 
 // Flip card
 function flip() {
-//    document.getElementById("plaintext2").value = document.getElementById("plaintext").value;
+//    document.getElementById("csrPlaintext2").value = document.getElementById("csrPlaintext").value;
     document.getElementById("card").style.transform = "rotateY(180deg)";
     document.getElementById("imgFlipBack").style.transform = "rotateY(180deg)";
     shift();
@@ -103,7 +102,7 @@ function flip() {
 
 // Flip card back
 function flipBack() {
-//    document.getElementById("ciphertext").value = document.getElementById("ciphertext2").value;
+//    document.getElementById("csrCipherText").value = document.getElementById("csrCipherText2").value;
     document.getElementById("card").style.transform = "rotateY(0deg)";
     document.getElementById("imgFlip").style.transform = "rotateY(0deg)";
     solve();
@@ -111,30 +110,35 @@ function flipBack() {
 
 // Shift to create a cipher
 function shift() {
-    // Grab the plaintext
-    let input = document.getElementById("plaintext2").value.toLowerCase();
+    // Grab the csrPlaintext
+    let input = document.getElementById("csrPlaintext2").value.toLowerCase();
 
-    // Code the ciphertext
-    let ciphertext = shiftText(input, shiftAmount); 
+    // Code the csrCipherText
+    let csrCipherText = shiftText(input, csrShiftAmount); 
 
     // Update the HTML
-    document.getElementById("ciphertext2").value = ciphertext;
-    document.getElementById("shiftAmount").innerHTML = shiftAmount;
+    document.getElementById("csrCipherText2").value = csrCipherText;
+    document.getElementById("csrShiftAmount").innerHTML = "Key " + csrShiftAmount;
 }
 
 // Increment the shift
 function incShift() {
-    console.log("REACHED");
-    if (shiftAmount < 26) {
-        shiftAmount++;
+    csrShiftAmount++;
+    if (csrShiftAmount <= 26) {
+        shift();
+    } else {
+        csrShiftAmount = 1;
         shift();
     }
 }
 
 // Decrement the shift
 function decShift() {
-    if (shiftAmount > 1) {
-        shiftAmount--;
+    csrShiftAmount--;
+    if (csrShiftAmount >= 1) {
+        shift();
+    } else {
+        csrShiftAmount = 26;
         shift();
     }
 }

@@ -140,6 +140,14 @@ html, body {
     font-family: 'Lucida Console', monospace;
     cursor: pointer;
 }
+*/
+
+.drop-down {
+    border: 0;
+    background-color:#85BAA1;
+    height: 30px;
+    outline: none;
+}
 
 /* ========= FLIPPING ANIMATION ======== */
 .flip-container {

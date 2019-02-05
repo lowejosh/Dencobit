@@ -136,7 +136,13 @@ function decodeDecimal(input) {
 }
 
 function decodeBase64(input) {
-    return atob(input); 
+    try {
+        atob(input); 
+        document.getElementById("base64Title").innerHTML = "Base64";
+    } catch (DOMException) {
+        document.getElementById("base64Title").innerHTML = "Base64 <i>(Incorrectly encoded)</i>";
+    }
+    return atob(input);
 }
 
 function decodeURL(input) {

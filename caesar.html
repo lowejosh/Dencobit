@@ -29,8 +29,8 @@
                                 Caesar Solver
                                 <img src="img/swapicon.png" id="imgFlip" width="26" height="26" class="swap-icon" onclick="flip()">
                             </div>
-                            <textarea class="input-text first-half" id="ciphertext" oninput="solve()" spellcheck="false">uryyb, jbeyq!</textarea>
-                            <textarea class="input-text second-half" id="plaintext" spellcheck="false" disabled></textarea>
+                            <textarea class="input-text first-half" id="csrCipherText" oninput="solve()" spellcheck="false">uryyb, jbeyq!</textarea>
+                            <textarea class="input-text second-half" id="csrPlaintext" spellcheck="false" disabled></textarea>
                             <div class="bottom-banner unselectable" id="shift"></div>
                         </div>
                     </div>
@@ -40,10 +40,10 @@
                                 Caesar Shifter
                                 <img src="img/swapicon.png" id="imgFlipBack" width="26" height="26" class="swap-icon" onclick="flipBack()">
                             </div>
-                            <textarea class="input-text first-half" id="plaintext2" oninput="shift()" spellcheck="false">hello, world!</textarea>
-                            <textarea class="input-text second-half" id="ciphertext2" spellcheck="false" disabled></textarea>
+                            <textarea class="input-text first-half" id="csrPlaintext2" oninput="shift()" spellcheck="false">hello, world!</textarea>
+                            <textarea class="input-text second-half" id="csrCipherText2" spellcheck="false" disabled></textarea>
                             <div class="bottom-banner unselectable" id="shift">
-                                <span class="shift-adjust" onclick="decShift()">- </span><span id="shiftAmount"></span><span class="shift-adjust" onclick="incShift()"> +</span>
+                                <span class="shift-adjust" onclick="decShift()">- </span><span id="csrShiftAmount"></span><span class="shift-adjust" onclick="incShift()"> +</span>
                             </div>
                         </div>
 
