@@ -24,7 +24,7 @@ function solve() {
         let csrHits = 0;
 
         // Check and calculate hits
-        csrHits+=checkHits(shiftedText, trigrpahs, 20);
+        csrHits+=checkHits(shiftedText, trigraphs, 20);
         csrHits+=checkHits(shiftedText, digraphs, 10);
         csrHits+=checkHits(shiftedText, highFreq, 2);
         csrHits+=checkHits(shiftedText, lowFreq, -2);
