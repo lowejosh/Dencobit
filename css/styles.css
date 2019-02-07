@@ -11,17 +11,20 @@ html, body {
 .title {
     text-align: center;
     font-family: 'Abel', sans-serif;
-    margin: 0;
-    margin-top: 0.5em;
+    margin-top: 16px;
+    margin-bottom: 8px;
     font-weight: bold;
     color: #322944;
 }
 
+.row {
+    height: 286px;
+}
+
 .col-sm {
-    height: 300px;
+    height: 270px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: yellow;
 }
 
 .input-title {
@@ -60,7 +63,7 @@ html, body {
     float: left;
     text-align: center;
     position: absolute;
-    top: 270px;
+    top: 240px;
     transition: 0.1s;
 }
 
@@ -78,22 +81,6 @@ html, body {
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
-}
-
-.nav-link {
-    font-family: 'Abel', sans-serif;
-    font-size: 18px;
-    color: #544F60;
-}
-
-.nav-link:hover {
-    color: #322944;
-    font-weight: bold;
-}
-
-.nav-link.active {
-    font-weight: bold;
-    color: #322944;
 }
 
 .first-half {
@@ -119,7 +106,8 @@ html, body {
     float: left;
     text-align: center;
     position: absolute;
-    top: 270px;
+    top: 240px;
+    margin-bottom: 80px;
 }
 
 .swap-icon {
@@ -140,13 +128,38 @@ html, body {
     font-family: 'Lucida Console', monospace;
     cursor: pointer;
 }
-*/
 
 .drop-down {
     border: 0;
     background-color:#85BAA1;
     height: 30px;
     outline: none;
+}
+
+.footer {
+    text-align: center;
+    color: #322943;
+    font-style: italic;
+}
+
+.footer a:link {
+    text-decoration: none;
+    color: #322943;
+}
+
+.footer a:visited {
+    text-decoration: none;
+    color: #322943;
+}
+
+.footer a:hover {
+    text-decoration: underline; 
+    color: #322943;
+}
+
+.footer a:active {
+    text-decoration: underline;
+    color: #322943;
 }
 
 /* ========= FLIPPING ANIMATION ======== */

@@ -45,19 +45,6 @@ function solve() {
     }
 }
 
-// Checks the given text for hits from a given array of hit registers and counts the score
-function checkHits(input, hitReg, score) {
-    let hits = 0;
-    for (let i = 0; i < hitReg.length; i++) {
-        let re = new RegExp(hitReg[i],"g");
-        // If there are matches, decrement csrHits by 0.2 for each one
-        while (re.exec(input) !== null) {
-            hits+=score;
-        }
-    }
-    return hits;
-}
-
 // Shifts the input across the alphabet for a given key
 function shiftText(input, key) {
     let shiftedText = "";
@@ -74,22 +61,6 @@ function shiftText(input, key) {
     return shiftedText;
 }
 
-// Flip card
-function flip() {
-//    document.getElementById("csrPlaintext2").value = document.getElementById("csrPlaintext").value;
-    document.getElementById("card").style.transform = "rotateY(180deg)";
-    document.getElementById("imgFlipBack").style.transform = "rotateY(180deg)";
-    shift();
-}
-
-// Flip card back
-function flipBack() {
-//    document.getElementById("csrCipherText").value = document.getElementById("csrCipherText2").value;
-    document.getElementById("card").style.transform = "rotateY(0deg)";
-    document.getElementById("imgFlip").style.transform = "rotateY(0deg)";
-    solve();
-}
-
 // Shift to create a cipher
 function shift() {
     // Grab the csrPlaintext
@@ -101,6 +72,24 @@ function shift() {
     // Update the HTML
     document.getElementById("csrCipherText2").value = csrCipherText;
     document.getElementById("csrShiftAmount").innerHTML = "Key " + csrShiftAmount;
+}
+
+// Start the placeholder decoding
+solve();
+
+// ========== HELPER FUNCTIONS ========== //
+
+// Checks the given text for hits from a given array of hit registers and counts the score
+function checkHits(input, hitReg, score) {
+    let hits = 0;
+    for (let i = 0; i < hitReg.length; i++) {
+        let re = new RegExp(hitReg[i],"g");
+        // If there are matches, decrement csrHits by 0.2 for each one
+        while (re.exec(input) !== null) {
+            hits+=score;
+        }
+    }
+    return hits;
 }
 
 // Increment the shift
@@ -125,5 +114,18 @@ function decShift() {
     }
 }
 
-// Start the placeholder decoding
-solve();
+// Flip card
+function flip() {
+//    document.getElementById("csrPlaintext2").value = document.getElementById("csrPlaintext").value;
+    document.getElementById("card").style.transform = "rotateY(180deg)";
+    document.getElementById("imgFlipBack").style.transform = "rotateY(180deg)";
+    shift();
+}
+
+// Flip card back
+function flipBack() {
+//    document.getElementById("csrCipherText").value = document.getElementById("csrCipherText2").value;
+    document.getElementById("card").style.transform = "rotateY(0deg)";
+    document.getElementById("imgFlip").style.transform = "rotateY(0deg)";
+    solve();
+}

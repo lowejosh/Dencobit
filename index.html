@@ -15,10 +15,6 @@
 
 <body>
     <h1 class="title">Denco.</h1>
-    <nav class="nav justify-content-center">
-        <a class="nav-link active" href="#">Encodings</a>
-        <a class="nav-link" href="caesar.html">Ciphers</a>
-    </nav>
     <div class="container">
         <div class="row">
             <div class="col-sm p-0 m-2">
@@ -54,9 +50,41 @@
                 <div class="d-button unselectable" onclick="Select(5)">Select</div>
            </div>
         </div>
+        <div class="row">
+            <div class="flip-container">
+                <div class="flipper" id="card">
+                    <div class="front">
+                        <div class="col-sm p-0 m-2 margin-fix">
+                            <div class="input-title unselectable">
+                                Caesar Decoder
+                                <img src="img/swapicon.png" id="imgFlip" width="26" height="26" class="swap-icon" onclick="flip()">
+                            </div>
+                            <textarea class="input-text first-half" id="csrCipherText" oninput="solve()" spellcheck="false">uryyb, jbeyq!</textarea>
+                            <textarea class="input-text second-half" id="csrPlaintext" spellcheck="false" disabled></textarea>
+                            <div class="bottom-banner unselectable" id="shift"></div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="col-sm p-0 m-2 margin-fix">
+                            <div class="input-title unselectable">
+                                Caesar Encoder
+                                <img src="img/swapicon.png" id="imgFlipBack" width="26" height="26" class="swap-icon" onclick="flipBack()">
+                            </div>
+                            <textarea class="input-text first-half" id="csrPlaintext2" oninput="shift()" spellcheck="false">hello, world!</textarea>
+                            <textarea class="input-text second-half" id="csrCipherText2" spellcheck="false" disabled></textarea>
+                            <div class="bottom-banner unselectable" id="shift">
+                                <span class="shift-adjust" onclick="decShift()">- </span><span id="csrShiftAmount"></span><span class="shift-adjust" onclick="incShift()"> +</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
     </div>
 
+    <div class="footer">By <a href="https://github.com/lowejosh">Joshua Lowe</a></div>
     <script src="js/EncodingScript.js"></script>
+    <script src="js/CaesarScript.js"></script>
 </body>
 
 </html>
