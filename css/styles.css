@@ -1,6 +1,7 @@
 
 html, body {
     background-color: #6E8894 !important;
+    color: #322944;
 }
 
 ::selection {
@@ -12,13 +13,20 @@ html, body {
     text-align: center;
     font-family: 'Abel', sans-serif;
     margin-top: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 0;
     font-weight: bold;
     color: #322944;
 }
 
+.sub-title { 
+    font-style: italic;
+    text-align: center;
+    color: #322944;
+    margin-bottom: 8px;
+}
+
 .row {
-    height: 286px;
+    min-height: 286px;
 }
 
 .col-sm {
@@ -107,7 +115,7 @@ html, body {
     text-align: center;
     position: absolute;
     top: 240px;
-    margin-bottom: 80px;
+    margin-bottom: 101px;
 }
 
 .swap-icon {
@@ -164,7 +172,7 @@ html, body {
 
 /* ========= FLIPPING ANIMATION ======== */
 .flip-container {
-	perspective: 1000px;
+    perspective: 1000px;
 }
 
 .flip-container, .flipper, .front, .back {
