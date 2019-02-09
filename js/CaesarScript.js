@@ -1,9 +1,9 @@
 // === Global Vars ===
-let trigraphs = "the and tha ent ion tio for nce has tis oft men you".split(' ');
-let digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo ck ce".split(' ');
-let highFreq = "e t a o i n s r h".split(' ');
-let lowFreq = "z q j x k v b y w".split(' ');
-let alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split()
+const trigraphs = "the and tha ent ion tio for nce has tis oft men you".split(' ');
+const digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo ck ce".split(' ');
+const highFreq = "e t a o i n s r h".split(' ');
+const lowFreq = "z q j x k v b y w".split(' ');
+const alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split()
 
 // ========== Caesar Solving Algorithm - Joshua Lowe, GitHub - https://github.com/lowejosh/ ========== //
 let csrHits = 0;
