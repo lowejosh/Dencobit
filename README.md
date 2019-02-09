@@ -1,6 +1,6 @@
 # Dencobit.
 ### Live at https://dencobit.com
-Personal project for simultaneous real-time decoding/encoding data
+Personal project for simultaneous real-time decoding/encoding of data
 
 ### Data Encodings
 ![alt text](https://github.com/lowejosh/dencobit/blob/master/img/dencogif-1.gif "Encodings")
