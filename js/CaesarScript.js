@@ -3,7 +3,6 @@ const trigraphs = "the and tha ent ion tio for nce has tis oft men you".split(' 
 const digraphs = "th he an in er on re ed nd ha at en es of nt ea ti to io le is ou ar as de rt ve ss ee tt ff ll mm oo ck ce".split(' ');
 const highFreq = "e t a o i n s r h".split(' ');
 const lowFreq = "z q j x k v b y w".split(' ');
-const alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split()
 
 // ========== Caesar Solving Algorithm - Joshua Lowe, GitHub - https://github.com/lowejosh/ ========== //
 let csrHits = 0;
@@ -17,7 +16,7 @@ function solve() {
     let bestScore = 0;
     let bestKeySoFar; 
 
-    // Brute for shift the csrCipherText and regex all csrHits and keep a score
+    // Brute for shift the ciphertext and regex all hits and keep a score
     let shiftedText;
     for (let i = 0; i < 26; i++) {
         shiftedText = shiftText(input, i);
@@ -29,7 +28,7 @@ function solve() {
         csrHits+=checkHits(shiftedText, highFreq, 2);
         csrHits+=checkHits(shiftedText, lowFreq, -2);
         
-        // If this shift has the most csrHits so far, save the key
+        // If this shift has the most hits so far, save the key
         if (csrHits > bestScore) {
             bestScore = csrHits;
             bestKeySoFar = i;
@@ -84,7 +83,7 @@ function checkHits(input, hitReg, score) {
     let hits = 0;
     for (let i = 0; i < hitReg.length; i++) {
         let re = new RegExp(hitReg[i],"g");
-        // If there are matches, decrement csrHits by 0.2 for each one
+        // If there are matches, decrement hits
         while (re.exec(input) !== null) {
             hits+=score;
         }
@@ -116,7 +115,6 @@ function decShift() {
 
 // Flip card
 function flip() {
-//    document.getElementById("csrPlaintext2").value = document.getElementById("csrPlaintext").value;
     document.getElementById("card").style.transform = "rotateY(180deg)";
     document.getElementById("imgFlipBack").style.transform = "rotateY(180deg)";
     shift();
@@ -124,7 +122,6 @@ function flip() {
 
 // Flip card back
 function flipBack() {
-//    document.getElementById("csrCipherText").value = document.getElementById("csrCipherText2").value;
     document.getElementById("card").style.transform = "rotateY(0deg)";
     document.getElementById("imgFlip").style.transform = "rotateY(0deg)";
     solve();
