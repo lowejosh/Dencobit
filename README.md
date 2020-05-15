@@ -1,5 +1,5 @@
 # Dencobit.
-### Live at https://dencobit.com
+### Live at https://lowejosh.github.io/Dencobit/
 Web app for simultaneous real-time decoding/encoding of data
 
 ### Data Encodings
